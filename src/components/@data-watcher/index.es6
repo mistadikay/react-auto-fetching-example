@@ -1,4 +1,4 @@
-import stateStore from 'stores/state';
+import state from 'state';
 
 export default function(Component) {
     return class DataWatcher extends Component {
@@ -59,7 +59,7 @@ export default function(Component) {
 
         _initCursors(props = this.props) {
             const cursorPaths = this.constructor.data(props, this.state);
-            const stateTree = stateStore.getTree();
+            const stateTree = state.getTree();
 
             Object.keys(cursorPaths)
                 .filter(branch => {

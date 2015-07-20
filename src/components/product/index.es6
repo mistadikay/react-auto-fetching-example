@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import DataWatcher from 'components/@data-watcher';
 
 @DataWatcher
-class ProductClass extends Component {
+class Product extends Component {
     static displayName = 'Product';
     static data = props => ({
         details: [
@@ -44,4 +44,4 @@ class ProductClass extends Component {
     }
 };
 
-export default ProductClass;
+export default Product;

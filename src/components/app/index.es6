@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import ProductsActions from 'actions/products';
-import stateStore from 'stores/state';
+import state from 'state';
 
 import DataWatcher from 'components/@data-watcher';
 import ProductsList from 'components/products-list';
 import ProductDescription from 'components/product';
 
 @DataWatcher
-class AppClass extends Component {
+class App extends Component {
     static displayName = 'app';
     static data = () => ({
         selectedProductID: [
@@ -20,7 +20,7 @@ class AppClass extends Component {
     constructor(props) {
         super(props);
 
-        stateStore.getTree().on('get', e => {
+        state.getTree().on('get', e => {
             const [
                 stateType,
                 branch,
@@ -58,4 +58,4 @@ class AppClass extends Component {
     }
 }
 
-export default AppClass;
+export default App;

@@ -4,7 +4,7 @@ import DataWatcher from 'components/@data-watcher';
 const sortTypes = [ 'asc', 'desc' ];
 
 @DataWatcher
-class ProductsListClass extends Component {
+class ProductsList extends Component {
     static displayName = 'ProductsList';
     static data = (props, state) => ({
         products: [
@@ -75,4 +75,4 @@ class ProductsListClass extends Component {
     }
 }
 
-export default ProductsListClass;
+export default ProductsList;
