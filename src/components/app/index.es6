@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProductsStore from 'stores/products';
 import ProductsActions from 'actions/products';
 import state from 'state';
 
@@ -20,31 +21,15 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        state.getTree().on('get', e => {
-            const [
-                stateType,
-                branch,
-                entity,
-                ...pathParams
-            ] = e.data.path;
+        state.on('get',
+            [ 'data', 'products', 'list' ],
+            sortOptions => ProductsActions.getProducts(sortOptions)
+        );
 
-            if (stateType === 'data' && !e.data.data) {
-                if (branch === 'products') {
-                    switch (entity) {
-                        case 'list':
-                            const [ sortOptions ] = pathParams;
-
-                            ProductsActions.getProducts(sortOptions);
-                            break;
-                        case 'details':
-                            const [ productID ] = pathParams;
-
-                            ProductsActions.getProductInfo(productID);
-                            break;
-                    }
-                }
-            }
-        });
+        state.on('get',
+            [ 'data', 'products', 'details' ],
+            productID => ProductsActions.getProductInfo(productID)
+        );
     }
 
     render() {
