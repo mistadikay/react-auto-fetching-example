@@ -16,6 +16,7 @@
     "less-loader": "2.2.x",
     "url-loader": "0.5.x",
     "json-loader": "0.5.x",
+    "html-webpack-plugin": "1.6.x",
 
     "babel": "5.6.x",
     "babel-runtime": "5.7.x",
@@ -44,7 +45,9 @@
     "eslint-plugin-babel": "1.1.x"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gulp": "./node_modules/.bin/babel-node ./node_modules/.bin/gulp --gulpfile gulpfile.es6",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development npm run gulp dev"
   },
   "license": "MIT",
   "bugs": {
