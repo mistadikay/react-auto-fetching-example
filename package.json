@@ -40,7 +40,7 @@
   "devDependencies": {
     "husky": "0.8.x",
     "webpack-dev-server": "1.10.x",
-    "eslint": "1.0.0-rc-1",
+    "eslint": "0.24.x",
     "babel-eslint": "3.1.x",
     "eslint-plugin-babel": "1.1.x"
   },
