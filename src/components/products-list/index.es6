@@ -42,6 +42,7 @@ class ProductsListClass extends Component {
 
     _renderSortSwitcher() {
         return DOM.div(null,
+            'sort:',
             DOM.label(null,
                 DOM.input({
                     id: 'sort',
@@ -60,13 +61,18 @@ class ProductsListClass extends Component {
             return DOM.div(null, 'loading...');
         }
 
-        return data.items.map(product => DOM.div({
-                className: 'products-list__item',
-                onClick: this._chooseProduct.bind(this, product.id),
-                key: product.id
-            },
-            product.name
-        ));
+        return DOM.ul(null,
+            data.items.map(product => DOM.li({
+                    key: product.id
+                },
+                DOM.a({
+                    href: '#' + product.id,
+                    className: 'products-list__item',
+                    onClick: this._chooseProduct.bind(this, product.id)
+                },
+                product.name)
+            ))
+        );
     }
 
     render() {

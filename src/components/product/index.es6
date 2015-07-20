@@ -33,7 +33,8 @@ class ProductClass extends Component {
         return Object.keys(data).map(key => {
             return DOM.div(
                 {
-                    className: 'product__property'
+                    className: 'product__property',
+                    key
                 },
                 data[key]
             );
