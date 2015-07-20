@@ -1,4 +1,4 @@
-import { Component, DOM } from 'react';
+import React, { Component } from 'react';
 import DataWatcher from 'components/@data-watcher';
 
 @DataWatcher
@@ -19,34 +19,27 @@ class ProductClass extends Component {
         }
     }
 
-    _renderProductDetails() {
+    render() {
         const data = this.state.data.details;
 
         if (!data) {
             if (this.props._productID) {
-                return DOM.div(null, 'loading...');
+                return (<div>{ 'loading...' }</div>);
             } else {
                 return null;
             }
         }
 
-        return Object.keys(data).map(key => {
-            return DOM.div(
+        return (
+            <div className='product'>
                 {
-                    className: 'product__property',
-                    key
-                },
-                data[key]
-            );
-        });
-    }
-
-    render() {
-        return DOM.div(
-            {
-                className: 'product'
-            },
-            this._renderProductDetails()
+                    Object.keys(data).map(key => (
+                        <div className='product__property' key={ key }>
+                            { data[key] }
+                        </div>
+                    ))
+                }
+            </div>
         )
     }
 };

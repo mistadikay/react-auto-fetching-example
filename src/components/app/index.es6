@@ -1,13 +1,10 @@
-import React, { Component, DOM } from 'react';
+import React, { Component } from 'react';
 import ProductsActions from 'actions/products';
 import stateStore from 'stores/state';
 
 import DataWatcher from 'components/@data-watcher';
-import ProductsListClass from 'components/products-list';
-import ProductClass from 'components/product';
-
-const ProductsList = React.createFactory(ProductsListClass);
-const ProductDescription = React.createFactory(ProductClass);
+import ProductsList from 'components/products-list';
+import ProductDescription from 'components/product';
 
 @DataWatcher
 class AppClass extends Component {
@@ -51,15 +48,12 @@ class AppClass extends Component {
     }
 
     render() {
-        return DOM.div(
-            {
-                className: 'app'
-            },
-            ProductsList(),
-            DOM.hr(null),
-            ProductDescription({
-                _productID: this.state.data.selectedProductID
-            })
+        return (
+            <div className='app'>
+                <ProductsList />
+                <hr />
+                <ProductDescription _productID={ this.state.data.selectedProductID } />
+            </div>
         );
     }
 }

@@ -1,4 +1,4 @@
-import { Component, DOM } from 'react';
+import React, { Component } from 'react';
 import DataWatcher from 'components/@data-watcher';
 
 const sortTypes = [ 'asc', 'desc' ];
@@ -40,48 +40,37 @@ class ProductsListClass extends Component {
         this.cursors.selectedProductID.set(productID);
     }
 
-    _renderSortSwitcher() {
-        return DOM.div(null,
-            'sort:',
-            DOM.label(null,
-                DOM.input({
-                    id: 'sort',
-                    type: 'checkbox',
-                    onChange: ::this._changeSort
-                }),
-                this.state.sortType
-            )
-        )
-    }
-
-    _renderProductsList() {
+    render() {
         const data = this.state.data.products;
 
         if (!data) {
-            return DOM.div(null, 'loading...');
+            return (<div>{ 'loading...' }</div>);
         }
 
-        return DOM.ul(null,
-            data.items.map(product => DOM.li({
-                    key: product.id
-                },
-                DOM.a({
-                    href: '#' + product.id,
-                    className: 'products-list__item',
-                    onClick: this._chooseProduct.bind(this, product.id)
-                },
-                product.name)
-            ))
-        );
-    }
-
-    render() {
-        return DOM.div(
-            {
-                className: 'products-list'
-            },
-            this._renderSortSwitcher(),
-            this._renderProductsList()
+        return (
+            <div className='products-list'>
+                <div className='products-list__sort'>
+                    { 'sort:' }
+                    <label>
+                        <input id='sort' type='checkbox'
+                            checked={ this.state.sortType === sortTypes[1] }
+                            onChange={ ::this._changeSort } />
+                        { this.state.sortType }
+                    </label>
+                </div>
+                <ul>
+                    {
+                        data.items.map(product => (
+                            <li key={ product.id }>
+                                <a href={ '#' + product.id } className='products-list__item'
+                                    onClick={ this._chooseProduct.bind(this, product.id) }>
+                                    { product.name }
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
         );
     }
 }
