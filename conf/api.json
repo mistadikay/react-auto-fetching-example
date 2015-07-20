@@ -1,0 +1,11 @@
+{
+  "development": {
+    "url": "http://private-0310e-reactautofetchingexample.apiary-mock.com/",
+    "products": {
+      "url": "products"
+    },
+    "product_info": {
+      "url": "product/:productID"
+    }
+  }
+}
