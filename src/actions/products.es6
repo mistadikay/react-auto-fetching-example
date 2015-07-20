@@ -7,7 +7,6 @@ class ProductsActions extends Actions {
     }
 
     dispatchProductsDataLoadError(error) {
-        console.log(error);
         this.dispatch('PRODUCTS_LOAD_ERROR', { error });
     }
 
@@ -26,7 +25,7 @@ class ProductsActions extends Actions {
 
     dispatchProductInfoDataLoadError(productID, error) {
         this.isRequesting[productID] = false;
-        this.dispatch('PRODUCT_INFO_LOADED', { productID, error });
+        this.dispatch('PRODUCT_INFO_LOAD_ERROR', { productID, error });
     }
 
     getProductInfo(productID) {
