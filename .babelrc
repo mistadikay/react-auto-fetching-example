@@ -1,5 +1,4 @@
 {
-  "optional": [ "runtime", "asyncToGenerator" ],
-  "blacklist": [ "regenerator" ],
+  "optional": [ "runtime" ],
   "stage": 0
 }
