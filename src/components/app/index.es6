@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ProductsStore from 'stores/products';
 import ProductsActions from 'actions/products';
 import state from 'state';
@@ -8,7 +8,7 @@ import ProductsList from 'components/products-list';
 import ProductDescription from 'components/product';
 
 @DataWatcher
-class App extends Component {
+class App extends React.Component {
     static displayName = 'app';
     static data = () => ({
         selectedProductID: [

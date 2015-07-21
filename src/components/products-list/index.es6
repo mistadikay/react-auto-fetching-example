@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DataWatcher from 'components/@data-watcher';
 
 const sortTypes = [ 'asc', 'desc' ];
 
 @DataWatcher
-class ProductsList extends Component {
+class ProductsList extends React.Component {
     static displayName = 'ProductsList';
     static data = (props, state) => ({
         products: [

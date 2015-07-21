@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DataWatcher from 'components/@data-watcher';
 
 @DataWatcher
-class Product extends Component {
+class Product extends React.Component {
     static displayName = 'Product';
     static data = props => ({
         details: [
@@ -25,9 +25,9 @@ class Product extends Component {
         if (!data) {
             if (this.props._productID) {
                 return (<div>{ 'loading...' }</div>);
-            } else {
-                return null;
             }
+
+            return null;
         }
 
         return (
@@ -40,8 +40,8 @@ class Product extends Component {
                     ))
                 }
             </div>
-        )
+        );
     }
-};
+}
 
 export default Product;
