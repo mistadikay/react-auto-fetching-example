@@ -11,14 +11,17 @@ class State {
         this.events[event] = {
             listener: e => {
                 const currentPath = e.data.path;
+                const existingData = e.data.data;
 
-                this.events[event].callbacks
-                    .filter(
-                        ({ path }) => isEqual(path, currentPath.slice(0, path.length))
-                    )
-                    .forEach(
-                        ({ path, callback }) => callback(...currentPath.slice(path.length))
-                    );
+                if (!existingData) {
+                    this.events[event].callbacks
+                        .filter(
+                            ({ path }) => isEqual(path, currentPath.slice(0, path.length))
+                        )
+                        .forEach(
+                            ({ path, callback }) => callback(...currentPath.slice(path.length))
+                        );
+                }
             },
             callbacks: []
         };
