@@ -38,7 +38,8 @@
     "webpack-dev-server": "1.10.x",
     "eslint": "0.24.x",
     "babel-eslint": "3.1.x",
-    "eslint-plugin-babel": "1.2.x"
+    "eslint-plugin-babel": "1.2.x",
+    "eslint-plugin-react": "3.0.x"
   },
   "scripts": {
     "gulp": "./node_modules/.bin/babel-node ./node_modules/.bin/gulp --gulpfile gulpfile.es6",
