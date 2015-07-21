@@ -1,7 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import autoprefixerConfig from './autoprefixer';
 
 export default {
     cache: true,
@@ -36,19 +35,10 @@ export default {
                 loader: 'json'
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'url',
-                query: {
-                    limit: 10000,
-                    name: 'images/[name]-[hash].[ext]'
-                }
-            },
-            {
                 test: /\.less$/,
                 loaders: [
                     'style',
                     'css?-minimize',
-                    'autoprefixer?' + autoprefixerConfig,
                     'less'
                 ]
             }

@@ -2,16 +2,12 @@
   "name": "react-auto-fetching-example",
   "version": "0.0.0",
   "description": "An example of React application using Baobab cursors to describe data dependencies in components with auto-fetching",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mistadikay/react-auto-fetching-example.git"
-  },
+  "repository": "mistadikay/react-auto-fetching-example",
   "author": "Denis Koltsov <iam@mistadikay.com> (https://github.com/mistadikay)",
   "dependencies": {
     "webpack": "1.10.x",
     "style-loader": "0.12.x",
     "css-loader": "0.15.x",
-    "autoprefixer-loader": "2.0.x",
     "less": "2.5.x",
     "less-loader": "2.2.x",
     "url-loader": "0.5.x",
@@ -49,7 +45,8 @@
     "lint": "eslint --ext .es6 .",
 
     "test": "NODE_ENV=test npm run lint",
-    "start": "NODE_ENV=development npm run gulp dev"
+    "start": "NODE_ENV=development npm run gulp dev",
+    "prepush": "npm run test"
   },
   "license": "MIT",
   "bugs": {
