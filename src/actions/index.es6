@@ -5,7 +5,6 @@ import dispatcher from 'dispatcher';
 class Actions {
     constructor() {
         this.api = api;
-        this.isRequesting = {};
     }
 
     dispatch(actionType, data) {

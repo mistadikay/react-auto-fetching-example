@@ -1,20 +1,32 @@
 import Actions from '.';
 
 class ProductsActions extends Actions {
+    constructor(...args) {
+        super(...args);
+
+        this.isRequesting = {};
+        this.isRequestingList = false;
+    }
+
     // products list
     dispatchProductsData(data) {
+        this.isRequestingList = false;
         this.dispatch('PRODUCTS_LOADED', { data });
     }
 
     dispatchProductsDataLoadError(error) {
+        this.isRequestingList = false;
         this.dispatch('PRODUCTS_LOAD_ERROR', { error });
     }
 
     getProducts(options) {
-        this.api.getProducts(options).then(
-            ::this.dispatchProductsData,
-            ::this.dispatchProductsDataLoadError
-        );
+        if (!this.isRequestingList) {
+            this.isRequestingList = true;
+            this.api.getProducts(options).then(
+                ::this.dispatchProductsData,
+                ::this.dispatchProductsDataLoadError
+            );
+        }
     }
 
     // product info
