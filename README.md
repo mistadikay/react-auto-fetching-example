@@ -7,7 +7,7 @@
 
 Details here: https://medium.com/@mistadikay/declarative-data-fetching-in-react-components-with-baobab-e43184c43852
 
-**IMPORTANT NOTICE!** Please note that it's just a proof concept and which is not ready for production.
+**IMPORTANT NOTICE!** Please note that it's just a proof concept which is not ready for production.
 
 ## Install
 
