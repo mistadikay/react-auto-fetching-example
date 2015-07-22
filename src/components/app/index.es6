@@ -18,9 +18,7 @@ class App extends React.Component {
         ]
     });
 
-    constructor(props) {
-        super(props);
-
+    componentDidMount() {
         state.on('get',
             [ 'data', 'products', 'list' ],
             sortOptions => ProductsActions.getProducts(sortOptions)
