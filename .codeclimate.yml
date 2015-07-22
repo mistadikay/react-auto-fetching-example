@@ -8,5 +8,8 @@ ratings:
   paths:
   - "**.es6"
 
-#exclude_paths:
-#-
+exclude_paths:
+  - "**.md"
+  - "**.html"
+  - "**.json"
+  - "LICENSE"
