@@ -21,6 +21,10 @@ export default function(Component) {
                 super.componentDidMount();
             }
 
+            Object.keys(this.cursors).forEach(branch => {
+                state.addWaitingCursor(this.cursors[branch]);
+            });
+
             this._updateDataState();
             this._dataWatch();
         }
@@ -56,15 +60,16 @@ export default function(Component) {
         }
 
         _initCursors(props = this.props) {
-            const cursorPaths = this.constructor.data(props, this.state);
             const stateTree = state.getTree();
 
-            Object.keys(cursorPaths)
+            this.cursorPaths = this.constructor.data(props, this.state);
+
+            Object.keys(this.cursorPaths)
                 .filter(branch => {
-                    return cursorPaths[branch].every(pathChunk => typeof pathChunk !== 'undefined');
+                    return this.cursorPaths[branch].every(pathChunk => typeof pathChunk !== 'undefined');
                 })
                 .forEach(branch => {
-                    this.cursors[branch] = stateTree.select(cursorPaths[branch]);
+                    this.cursors[branch] = stateTree.select(this.cursorPaths[branch]);
                 });
         }
 

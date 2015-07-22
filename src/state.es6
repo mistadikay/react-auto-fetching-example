@@ -3,8 +3,9 @@ import isEqual from 'lodash.isequal';
 
 class State {
     constructor() {
-        this.events = {};
         this.tree = new Baobab();
+        this.events = {};
+        this.waitingCursors = [];
     }
 
     _createEventListener(event) {
@@ -33,6 +34,10 @@ class State {
         // todo
     }
 
+    addWaitingCursor(cursor) {
+        this.waitingCursors.push(cursor);
+    }
+
     get() {
         return this.tree.get();
     }
@@ -57,6 +62,17 @@ class State {
         if (!this.events[event]) {
             this._createEventListener(event);
         }
+
+        this.waitingCursors.forEach(waitingCursor => {
+            const waitingPath = waitingCursor.path;
+
+            if (
+                isEqual(path, waitingPath.slice(0, path.length)) &&
+                !this.tree.select(waitingPath).exists()
+            ) {
+                callback(...waitingPath.slice(path.length));
+            }
+        });
 
         this.events[event].callbacks.push({ path, callback });
     }
