@@ -10,7 +10,7 @@ export default function(Component) {
 
             this.state = {
                 ...this.state,
-                data: {}
+                data: this._getCurrentData()
             };
 
             this._updateData = this._updateData.bind(this);
