@@ -13,7 +13,7 @@ export default function(Component) {
                 data: this._getCurrentData()
             };
 
-            this._updateData = this._updateData.bind(this);
+            this._updateDataState = this._updateDataState.bind(this);
         }
 
         componentDidMount() {
@@ -21,7 +21,7 @@ export default function(Component) {
                 super.componentDidMount();
             }
 
-            this._updateData();
+            this._updateDataState();
             this._dataWatch();
         }
 
@@ -35,10 +35,8 @@ export default function(Component) {
 
         _reloadData(props) {
             this._dataUnwatch();
-
             this._initCursors(props);
-            this._updateData();
-
+            this._updateDataState();
             this._dataWatch();
         }
 
@@ -54,7 +52,7 @@ export default function(Component) {
                     cursor.unset();
                 }
             });
-            this._updateData();
+            this._updateDataState();
         }
 
         _initCursors(props = this.props) {
@@ -72,13 +70,13 @@ export default function(Component) {
 
         _dataWatch() {
             Object.keys(this.cursors).forEach(
-                cursorType => this.cursors[cursorType].on('update', this._updateData)
+                cursorType => this.cursors[cursorType].on('update', this._updateDataState)
             );
         }
 
         _dataUnwatch() {
             Object.keys(this.cursors).forEach(
-                cursorType => this.cursors[cursorType].off('update', this._updateData)
+                cursorType => this.cursors[cursorType].off('update', this._updateDataState)
             );
         }
 
@@ -92,7 +90,7 @@ export default function(Component) {
             return data;
         }
 
-        _updateData() {
+        _updateDataState() {
             this.setState({
                 data: this._getCurrentData()
             });
