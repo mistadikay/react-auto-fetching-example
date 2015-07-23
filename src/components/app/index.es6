@@ -1,11 +1,15 @@
 import React from 'react';
-import ProductsStore from 'stores/products';
-import ProductsActions from 'actions/products';
-import { state, DataWatcher } from 'doob';
+import productsStore from 'stores/products';
+import productsActions from 'actions/products';
+import { DataInit, DataWatcher } from 'doob';
+import state from 'state';
 
 import ProductsList from 'components/products-list';
 import ProductDescription from 'components/product';
 
+@DataInit({
+    state
+})
 @DataWatcher
 class App extends React.Component {
     static displayName = 'app';
@@ -20,12 +24,12 @@ class App extends React.Component {
     componentDidMount() {
         state.on('get',
             [ 'data', 'products', 'list' ],
-            sortOptions => ProductsActions.getProducts(sortOptions)
+            sortOptions => productsActions.getProducts(sortOptions)
         );
 
         state.on('get',
             [ 'data', 'products', 'details' ],
-            productID => ProductsActions.getProductInfo(productID)
+            productID => productsActions.getProductInfo(productID)
         );
     }
 
