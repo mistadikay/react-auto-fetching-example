@@ -6,8 +6,7 @@ export default {
     cache: true,
     entry: [
         './src',
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:3001'
+        'webpack/hot/dev-server'
     ],
     output: {
         pathinfo: true,
