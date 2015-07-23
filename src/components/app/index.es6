@@ -1,9 +1,8 @@
 import React from 'react';
 import ProductsStore from 'stores/products';
 import ProductsActions from 'actions/products';
-import state from 'state';
+import { state, DataWatcher } from 'doob';
 
-import DataWatcher from 'components/@data-watcher';
 import ProductsList from 'components/products-list';
 import ProductDescription from 'components/product';
 

@@ -23,9 +23,8 @@
 
     "flux": "2.0.x",
     "superagent": "1.2.x",
-    "baobab": "2.0.0-dev10",
     "emmett": "3.1.x",
-    "lodash.isequal": "3.0.x",
+    "doob": "0.0.x",
 
     "gulp": "gulpjs/gulp#4.0",
     "gulp-util": "3.0.x",

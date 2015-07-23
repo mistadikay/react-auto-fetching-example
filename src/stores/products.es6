@@ -1,4 +1,4 @@
-import state from 'state';
+import { state } from 'doob';
 
 import Store from '.';
 import constants from 'constants/actions';

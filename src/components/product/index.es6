@@ -1,5 +1,5 @@
 import React from 'react';
-import DataWatcher from 'components/@data-watcher';
+import { DataWatcher } from 'doob';
 
 @DataWatcher
 class Product extends React.Component {
