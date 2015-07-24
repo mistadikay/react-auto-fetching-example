@@ -32,7 +32,7 @@ class ProductsList extends React.Component {
     _changeSort(e) {
         this.setState({
             sortType: e.target.checked ? sortTypes[1] : sortTypes[0]
-        }, this._reloadData);
+        }, this.reloadComponentData);
     }
 
     _chooseProduct(productID) {

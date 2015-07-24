@@ -7,9 +7,7 @@ import state from 'state';
 import ProductsList from 'components/products-list';
 import ProductDescription from 'components/product';
 
-@DataInit({
-    state
-})
+@DataInit(state)
 @DataFetcher([
     {
         path: [ 'data', 'products', 'list' ],
