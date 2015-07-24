@@ -24,7 +24,7 @@
     "flux": "2.0.x",
     "superagent": "1.2.x",
     "emmett": "3.1.x",
-    "doob": "0.2.x",
+    "doob": "0.3.x",
 
     "gulp": "gulpjs/gulp#4.0",
     "gulp-util": "3.0.x",
