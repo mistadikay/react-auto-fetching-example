@@ -3,24 +3,23 @@ import { DataWatcher } from 'doob';
 
 const sortTypes = [ 'asc', 'desc' ];
 
-@DataWatcher
+@DataWatcher((props, state) => ({
+    products: [
+        'data',
+        'products',
+        'list',
+        {
+            sort_type: state.sortType
+        }
+    ],
+    selectedProductID: [
+        'ui',
+        'products',
+        'selected'
+    ]
+}))
 class ProductsList extends React.Component {
     static displayName = 'ProductsList';
-    static data = (props, state) => ({
-        products: [
-            'data',
-            'products',
-            'list',
-            {
-                sort_type: state.sortType
-            }
-        ],
-        selectedProductID: [
-            'ui',
-            'products',
-            'selected'
-        ]
-    });
 
     constructor(props) {
         super(props);
