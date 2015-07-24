@@ -9,24 +9,18 @@ class Product extends React.Component {
             'data',
             'products',
             'details',
-            props._productID
+            [
+                'ui',
+                'products',
+                'selected'
+            ]
         ]
     });
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps._productID !== this.props._productID) {
-            this._reloadData(nextProps);
-        }
-    }
 
     render() {
         const data = this.state.data.details;
 
         if (!data) {
-            if (this.props._productID) {
-                return (<div>{ 'loading...' }</div>);
-            }
-
             return null;
         }
 

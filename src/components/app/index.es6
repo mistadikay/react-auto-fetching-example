@@ -10,16 +10,8 @@ import ProductDescription from 'components/product';
 @DataInit({
     state
 })
-@DataWatcher
 class App extends React.Component {
     static displayName = 'app';
-    static data = () => ({
-        selectedProductID: [
-            'ui',
-            'products',
-            'selected'
-        ]
-    });
 
     componentDidMount() {
         state.on('get',
@@ -38,7 +30,7 @@ class App extends React.Component {
             <div className='app'>
                 <ProductsList />
                 <hr />
-                <ProductDescription _productID={ this.state.data.selectedProductID } />
+                <ProductDescription />
             </div>
         );
     }
