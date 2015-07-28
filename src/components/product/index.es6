@@ -1,23 +1,25 @@
 import React from 'react';
 import { DataWatcher } from 'doob';
 
-@DataWatcher(props => ({
-    details: [
-        'data',
-        'products',
-        'details',
-        [
-            'ui',
+@DataWatcher(function(props) {
+    return {
+        details: [
+            'data',
             'products',
-            'selected'
+            'details',
+            [
+                'ui',
+                'products',
+                'selected'
+            ]
         ]
-    ]
-}))
+    };
+})
 class Product extends React.Component {
     static displayName = 'Product';
 
     render() {
-        const data = this.state.data.details;
+        const data = this.props.details;
 
         if (!data) {
             return null;

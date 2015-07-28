@@ -11,7 +11,11 @@ import ProductDescription from 'components/product';
 @DataFetcher([
     {
         path: [ 'data', 'products', 'list' ],
-        callback: sortOptions => productsActions.getProducts(sortOptions)
+        callback: sortOptions => {
+            if (sortOptions.sort_type) {
+                productsActions.getProducts(sortOptions);
+            }
+        }
     },
     {
         path: [ 'data', 'products', 'details' ],

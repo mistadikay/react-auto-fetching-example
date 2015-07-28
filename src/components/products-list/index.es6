@@ -3,44 +3,53 @@ import { DataWatcher } from 'doob';
 
 const sortTypes = [ 'asc', 'desc' ];
 
-@DataWatcher((props, state) => ({
-    products: [
-        'data',
-        'products',
-        'list',
-        {
-            sort_type: state.sortType
-        }
-    ],
-    selectedProductID: [
-        'ui',
-        'products',
-        'selected'
-    ]
-}))
+@DataWatcher(function(props) {
+    return {
+        products: [
+            'data',
+            'products',
+            'list',
+            {
+                sort_type: props.sortType
+            }
+        ],
+        selectedProductID: [
+            'ui',
+            'products',
+            'selected'
+        ],
+        sortType: [
+            'ui',
+            'products',
+            'sort-type'
+        ]
+    };
+})
 class ProductsList extends React.Component {
     static displayName = 'ProductsList';
 
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
 
-        this.state = {
-            sortType: sortTypes[0]
-        };
+        props.cursors.sortType.set(sortTypes[0]);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.sortType !== this.props.sortType) {
+            this.props.reloadComponentData(nextProps);
+        }
     }
 
     _changeSort(e) {
-        this.setState({
-            sortType: e.target.checked ? sortTypes[1] : sortTypes[0]
-        }, this.reloadComponentData);
+        this.props.cursors.sortType.set(e.target.checked ? sortTypes[1] : sortTypes[0]);
     }
 
     _chooseProduct(productID) {
-        this.cursors.selectedProductID.set(productID);
+        this.props.cursors.selectedProductID.set(productID);
     }
 
     render() {
-        const data = this.state.data.products;
+        const data = this.props.products;
 
         if (!data) {
             return (<div>{ 'loading...' }</div>);
@@ -52,9 +61,9 @@ class ProductsList extends React.Component {
                     { 'sort:' }
                     <label>
                         <input id='sort' type='checkbox'
-                            checked={ this.state.sortType === sortTypes[1] }
+                            checked={ this.props.sortType === sortTypes[1] }
                             onChange={ ::this._changeSort } />
-                        { this.state.sortType }
+                        { this.props.sortType }
                     </label>
                 </div>
                 <ul>

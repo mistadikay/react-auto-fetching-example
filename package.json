@@ -24,7 +24,7 @@
     "flux": "2.0.x",
     "superagent": "1.2.x",
     "emmett": "3.1.x",
-    "doob": "0.3.x",
+    "doob": "0.4.x",
 
     "gulp": "gulpjs/gulp#4.0",
     "gulp-util": "3.0.x",
@@ -36,9 +36,9 @@
     "husky": "0.9.x",
     "webpack-dev-server": "1.10.x",
     "eslint": "0.24.x",
-    "babel-eslint": "3.1.x",
+    "babel-eslint": "4.0.x",
     "eslint-plugin-babel": "1.2.x",
-    "eslint-plugin-react": "3.0.x"
+    "eslint-plugin-react": "3.1.x"
   },
   "scripts": {
     "gulp": "./node_modules/.bin/babel-node ./node_modules/.bin/gulp --gulpfile gulpfile.es6",
