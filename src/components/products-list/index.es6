@@ -34,12 +34,6 @@ class ProductsList extends React.Component {
         props.cursors.sortType.set(sortTypes[0]);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.sortType !== this.props.sortType) {
-            this.props.reloadComponentData(nextProps);
-        }
-    }
-
     _changeSort(e) {
         this.props.cursors.sortType.set(e.target.checked ? sortTypes[1] : sortTypes[0]);
     }
