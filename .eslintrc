@@ -302,12 +302,6 @@
     babel/generator-star-spacing:
       - 2
       - after
-    babel/space-in-brackets:
-      - 2
-      - always
-      - arraysInObjects: true
-        objectsInObjects: true
-        propertyName: false
 
     # React
     react/display-name: 2
