@@ -9,18 +9,24 @@ import ProductDescription from 'components/product';
 
 @DataInit(state)
 @DataFetcher([
-    {
-        path: [ 'data', 'products', 'list' ],
-        callback: sortOptions => {
-            if (sortOptions.sort_type) {
-                productsActions.getProducts(sortOptions);
+    ([ type, store, branch, sortOptions ]) => [
+        {
+            path: [ 'data', 'products', 'list', sortOptions ],
+            callback() {
+                if (sortOptions.sort_type) {
+                    productsActions.getProducts(sortOptions);
+                }
             }
         }
-    },
-    {
-        path: [ 'data', 'products', 'details' ],
-        callback: productID => productsActions.getProductInfo(productID)
-    }
+    ],
+    ([ type, store, branch, productID ]) => [
+        {
+            path: [ 'data', 'products', 'details', productID ],
+            callback() {
+                productsActions.getProductInfo(productID);
+            }
+        }
+    ]
 ])
 class App extends React.Component {
     static displayName = 'app';
