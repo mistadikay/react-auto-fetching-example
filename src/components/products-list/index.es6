@@ -1,6 +1,8 @@
 import React from 'react';
 import { DataWatcher } from 'doob';
 
+import { selectProduct, changeSorting } from 'mutators/products';
+
 const sortTypes = [ 'asc', 'desc' ];
 
 @DataWatcher(props => {
@@ -19,11 +21,6 @@ const sortTypes = [ 'asc', 'desc' ];
                 sort_type: sortType
             }
         ],
-        selectedProductID: [
-            'ui',
-            'products',
-            'selected'
-        ],
         sortType
     };
 })
@@ -33,21 +30,21 @@ class ProductsList extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        props.cursors.sortType.set(sortTypes[0]);
+        changeSorting(sortTypes[0]);
     }
 
     _changeSort(e) {
-        this.props.cursors.sortType.set(e.target.checked ? sortTypes[1] : sortTypes[0]);
+        changeSorting(e.target.checked ? sortTypes[1] : sortTypes[0]);
     }
 
     _chooseProduct(productID) {
-        this.props.cursors.selectedProductID.set(productID);
+        selectProduct(productID);
     }
 
     render() {
-        const data = this.props.products;
+        const products = this.props.products;
 
-        if (!data) {
+        if (!products) {
             return (<div>{ 'loading...' }</div>);
         }
 
@@ -64,7 +61,7 @@ class ProductsList extends React.Component {
                 </div>
                 <ul>
                     {
-                        data.items.map(product => (
+                        products.items.map(product => (
                             <li key={ product.id }>
                                 <a href={ '#' + product.id } className='products-list__item'
                                     onClick={ this._chooseProduct.bind(this, product.id) }>

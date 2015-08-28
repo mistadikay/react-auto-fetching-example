@@ -1,6 +1,5 @@
 import React from 'react';
-import productsStore from 'stores/products';
-import productsActions from 'actions/products';
+import { getProducts, getProductInfo } from 'fetchers/products';
 import { DataInit, DataFetcher } from 'doob';
 import state from 'state';
 
@@ -14,7 +13,7 @@ import ProductDescription from 'components/product';
             path: [ 'data', 'products', 'list', sortOptions ],
             callback() {
                 if (sortOptions.sort_type) {
-                    productsActions.getProducts(sortOptions);
+                    getProducts(sortOptions);
                 }
             }
         }
@@ -23,7 +22,7 @@ import ProductDescription from 'components/product';
         {
             path: [ 'data', 'products', 'details', productID ],
             callback() {
-                productsActions.getProductInfo(productID);
+                getProductInfo(productID);
             }
         }
     ]

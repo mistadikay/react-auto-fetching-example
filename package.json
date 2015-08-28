@@ -22,9 +22,7 @@
 
     "react": "0.13.x",
 
-    "flux": "2.0.x",
     "superagent": "1.3.x",
-    "emmett": "3.1.x",
     "doob": "0.9.x",
 
     "gulp": "gulpjs/gulp#4.0",
