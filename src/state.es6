@@ -70,7 +70,7 @@ class State {
                 isEqual(path, waitingPath.slice(0, path.length)) &&
                 !this.tree.select(waitingPath).exists()
             ) {
-                callback(...waitingPath.slice(path.length));
+                return callback(...waitingPath.slice(path.length));
             }
         });
 

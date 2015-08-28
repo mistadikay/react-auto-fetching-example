@@ -26,8 +26,7 @@ const buildRequest = function(httpMethod, apiMethod, params) {
     return new Promise(
         function(resolve, reject) {
             superagent[httpMethod](buildRequestURL(apiMethod))
-                .set(HEADERS)
-                [paramsTransport](params)
+                .set(HEADERS)[paramsTransport](params)
                 .on('error',
                     function(error) {
                         reject(error);

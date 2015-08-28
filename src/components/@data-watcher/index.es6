@@ -66,7 +66,9 @@ export default function(Component) {
 
             Object.keys(this.cursorPaths)
                 .filter(branch => {
-                    return this.cursorPaths[branch].every(pathChunk => typeof pathChunk !== 'undefined');
+                    return this.cursorPaths[branch].every(
+                        pathChunk => typeof pathChunk !== 'undefined'
+                    );
                 })
                 .forEach(branch => {
                     this.cursors[branch] = stateTree.select(this.cursorPaths[branch]);
