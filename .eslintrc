@@ -104,11 +104,7 @@
     no-unused-expressions: 0 # ? (chai)
     no-useless-call: 2
     no-void: 2
-    no-warning-comments:
-      - 1
-      - terms:
-          - TODO
-        location: start
+    no-warning-comments: 0
     no-with: 2
     radix: 2
     vars-on-top: 2
@@ -131,8 +127,12 @@
     no-undef: 2
     no-undef-init: 2
     no-undefined: 2
-    no-unused-vars: 1
-    no-use-before-define: 2
+    no-unused-vars:
+      - 1
+      - args: none
+    no-use-before-define:
+      - 2
+      - nofunc
 
     # Node.js
     callback-return:
@@ -155,6 +155,9 @@
       - singleValue: true
         objectsInArrays: true
         arraysInArrays: true
+    block-spacing:
+      - 2
+      - always
     indent:
       - 2
       - 4
@@ -181,7 +184,7 @@
     id-length:
       - 2
       - min: 2
-        max: 25
+        max: 30
         exceptions:
           - "i"
           - "e"
@@ -270,12 +273,15 @@
     generator-star-spacing: 0
     no-class-assign: 2
     no-const-assign: 2
+    no-dupe-class-members: 2
     no-this-before-super: 2
     no-var: 2
     object-shorthand: 0
+    prefer-arrow-callback: 0
     prefer-const: 2
     prefer-spread: 1
     prefer-reflect: 0 # todo
+    prefer-template: 0
     require-yield: 1
 
     # Legacy
